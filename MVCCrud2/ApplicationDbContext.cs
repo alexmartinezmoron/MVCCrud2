@@ -13,10 +13,11 @@ namespace MVCCrud2
         {
         }
 
-       
-       // public DbSet<Cliente> Clientes => Set<Cliente>();
 
-       
+        // public DbSet<Cliente> Clientes => Set<Cliente>();
+        public DbSet<Coche> Coches => Set<Coche>();
+
+
         public DbSet<MVCCrud2.VeiwModels.AddClienteVeiwModel> AddClienteVeiwModel { get; set; } = default!;
         public DbSet<Cliente> Clientes { get; set; } = default!;
 
