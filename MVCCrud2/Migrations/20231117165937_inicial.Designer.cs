@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MVCCrud2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231117154241_coches")]
-    partial class coches
+    [Migration("20231117165937_inicial")]
+    partial class inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,10 +65,6 @@ namespace MVCCrud2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Marca")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Matricula")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -77,9 +73,35 @@ namespace MVCCrud2.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("marcaId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("marcaId");
+
                     b.ToTable("Coches");
+                });
+
+            modelBuilder.Entity("MVCCrud2.Models.Marca", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("pais")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Marcas");
                 });
 
             modelBuilder.Entity("MVCCrud2.VeiwModels.AddClienteVeiwModel", b =>
@@ -116,6 +138,17 @@ namespace MVCCrud2.Migrations
                     b.ToTable("AddClienteVeiwModel");
                 });
 
+            modelBuilder.Entity("MVCCrud2.Models.Coche", b =>
+                {
+                    b.HasOne("MVCCrud2.Models.Marca", "marca")
+                        .WithMany("Coches")
+                        .HasForeignKey("marcaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("marca");
+                });
+
             modelBuilder.Entity("MVCCrud2.VeiwModels.AddClienteVeiwModel", b =>
                 {
                     b.HasOne("MVCCrud2.Models.Cliente", "Cliente")
@@ -125,6 +158,11 @@ namespace MVCCrud2.Migrations
                         .IsRequired();
 
                     b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("MVCCrud2.Models.Marca", b =>
+                {
+                    b.Navigation("Coches");
                 });
 #pragma warning restore 612, 618
         }
