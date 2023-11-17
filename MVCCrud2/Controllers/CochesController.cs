@@ -46,25 +46,29 @@ namespace MVCCrud2.Controllers
         }
 
         // GET: Coches/Create
+        // Acción para mostrar el formulario de creación de coches
         public IActionResult Create()
         {
+            // Obtener las marcas disponibles desde la base de datos
+            var marcas = _context.Marcas.ToList();
+
+            // Puedes pasar las marcas al modelo de la vista
+            ViewBag.Marcas = marcas;
+
+            // Devolver la vista con las marcas disponibles
             return View();
         }
 
-        // POST: Coches/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // Otra acción para manejar la creación del coche
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Matricula,Modelo,Color")] Coche coche)
+        public IActionResult Create(Coche coche)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(coche);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(coche);
+            // Aquí puedes manejar la lógica para guardar el coche en la base de datos
+            // coche.MarcaId contendría el ID de la marca seleccionada
+
+            // Tu lógica de guardado
+
+            return RedirectToAction("Index", "Coches"); // Redireccionar a donde corresponda después de crear el coche
         }
 
         // GET: Coches/Edit/5
