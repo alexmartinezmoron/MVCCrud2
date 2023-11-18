@@ -10,6 +10,7 @@
 
         //Relaciones
         public Marca marca { get; set; } = null!;
+        public int? MarcayId { get; set; }
 
     }
 }
