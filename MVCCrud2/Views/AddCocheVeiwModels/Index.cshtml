@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVCCrud2.Models.Coche>
+﻿@model IEnumerable<MVCCrud2.VeiwModels.AddCocheVeiwModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.Color)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MarcayId)
+                @Html.DisplayNameFor(model => model.MarcaId)
             </th>
             <th></th>
         </tr>
@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.Color)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MarcayId)
+                @Html.DisplayFor(modelItem => item.MarcaId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

@@ -20,6 +20,9 @@ namespace MVCCrud2
 
 
         public DbSet<MVCCrud2.VeiwModels.AddClienteVeiwModel> AddClienteVeiwModel { get; set; } = default!;
+
+
+        public DbSet<MVCCrud2.VeiwModels.AddCocheVeiwModel> AddCocheVeiwModel { get; set; } = default!;
         
 
     }

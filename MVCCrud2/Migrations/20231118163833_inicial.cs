@@ -32,8 +32,8 @@ namespace MVCCrud2.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    pais = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Pais = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,7 +72,8 @@ namespace MVCCrud2.Migrations
                     Matricula = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Modelo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Color = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    marcaId = table.Column<int>(type: "int", nullable: false)
+                    marcaId = table.Column<int>(type: "int", nullable: false),
+                    MarcayId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
